@@ -10,6 +10,7 @@ export class MovieCardComponent {
   movies: any[] = [];
   constructor(public fetchApiData: UserRegistrationService) {}
 
+  //void means that we can expect no return value
   ngOnInit(): void {
     this.getMovies();
   }
