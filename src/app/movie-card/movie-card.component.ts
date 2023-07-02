@@ -30,20 +30,29 @@ export class MovieCardComponent {
     });
   }
 
-  openGenreDialog(): void {
+  openGenreDialog(genre: string): void {
     this.dialog.open(GenreViewComponent, {
+      data: {
+        genre,
+      },
       width: '280px',
     });
   }
 
-  openDirectorDialog(): void {
+  openDirectorDialog(director: string): void {
     this.dialog.open(DirectorViewComponent, {
+      data: {
+        director,
+      },
       width: '280px',
     });
   }
 
-  openSynopsisDialog(): void {
+  openSynopsisDialog(description: string): void {
     this.dialog.open(MovieViewComponent, {
+      data: {
+        description,
+      },
       width: '280px',
     });
   }
