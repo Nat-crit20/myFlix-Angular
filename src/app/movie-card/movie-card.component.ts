@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRegistrationService } from '../fetch-api-data.service';
-
+import { MovieInfoComponent } from '../movie-info/movie-info.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -8,7 +10,11 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 })
 export class MovieCardComponent {
   movies: any[] = [];
-  constructor(public fetchApiData: UserRegistrationService) {}
+  constructor(
+    public fetchApiData: UserRegistrationService,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog
+  ) {}
 
   //void means that we can expect no return value
   ngOnInit(): void {
@@ -20,6 +26,16 @@ export class MovieCardComponent {
       this.movies = resp;
       console.log(this.movies);
       return this.movies;
+    });
+  }
+
+  openInfo(name: string, description: string): void {
+    this.dialog.open(MovieInfoComponent, {
+      data: {
+        title: name,
+        content: description,
+      },
+      //width: '280px'
     });
   }
 }
