@@ -28,7 +28,7 @@ export class MovieCardComponent {
       return this.movies;
     });
   }
-
+  // This is used to create info about the genre, director, or the synopsis
   openInfo(name: string, description: string): void {
     this.dialog.open(MovieInfoComponent, {
       data: {
